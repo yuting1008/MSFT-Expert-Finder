@@ -66,7 +66,7 @@
           <img src="images/custom-app-allowed.png" alt="img-alt-text" width="300">
 
 # Step 2. 資料準備
-當使用者輸入查詢時，Expert Finder 會呼叫 [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview) 以存取用戶資料，並回傳用戶的姓名、照片、辦公室地點、以及技能。以下將介紹如何利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點，以及在 Graph Explorer 中利用 API 更新用戶的技能。若您想要批次更改大量使用者資訊，您可以參考 [Step 7. 利用 PowerShell 大量更新使用者資訊 (Optional)](#step-7.-利用-powershell-大量更新使用者資訊-(optional))。
+當使用者輸入查詢時，Expert Finder 會呼叫 [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview) 以存取用戶資料，並回傳用戶的姓名、照片、辦公室地點、以及技能。以下將介紹如何利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點，以及在 Graph Explorer 中利用 API 更新用戶的技能。若您想要批次更改大量使用者資訊，您可以參考 [Step 7. 利用 PowerShell 大量更新使用者資訊 (Optional)](#step-7-利用-powershell-大量更新使用者資訊-(optional))。
 <!-- <p> <span style="color:red;font-weight:bold">⚠ 注意：您必須擁有 <a href="https://learn.microsoft.com/zh-tw/entra/identity/role-based-access-control/permissions-reference#global-administrator">Microsoft Entra 全域系統管理員</a> 的權限。</span></p> -->
 
 ## Step 2.1 利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點
@@ -284,7 +284,7 @@ git clone https://github.com/yuting1008/MSFT-Expert-Finder.git
     ```
     .\RegisterAppOnly.ps1 -AppName "Graph PowerShell Script" -CertPath "Certificate.cer"
     ```
-1. 若應用程式成功註冊後，您會在 `PowerShell` 資料夾中看到 `AppInfo.json` 檔案，裡面儲存應用程式的 `ClientId` 與 `TenentId`。另外您也會在 [Microsoft Entra Admin Center](https://entra.microsoft.com) 中看到您剛建立的應用程式，如 [Step 7.6](#step-7.6-全域管理員授予應用程式-api-權限) 中圖一所示。
+1. 若應用程式成功註冊後，您會在 `PowerShell` 資料夾中看到 `AppInfo.json` 檔案，裡面儲存應用程式的 `ClientId` 與 `TenentId`。另外您也會在 [Microsoft Entra Admin Center](https://entra.microsoft.com) 中看到您剛建立的應用程式，如 [Step 7.6](#step-76-全域管理員授予應用程式-api-權限) 中圖一所示。
 
 > 若想了解更多以 PowerShell 註冊 Microsoft Entra 應用程式的資訊，可參考此[文件](https://learn.microsoft.com/en-us/powershell/microsoftgraph/app-only?view=graph-powershell-1.0)。
 
@@ -324,7 +324,7 @@ git clone https://github.com/yuting1008/MSFT-Expert-Finder.git
 <p>
   <span style="color:red;font-weight:bold">
     ⚠ 注意：每次要更新用戶資訊時，您只需要依照 
-    <a href="#step-7-2-準備待更新的用戶資訊-csv-檔">Step 7.2 </a>準備待更新的用戶資訊 CSV 檔，再根據 
-    <a href="#step-7-7-利用-powershell-大量更新用戶資訊">Step 7.7 </a>利用 PowerShell 大量更新用戶資訊即可，不需要重新註冊應用程式或授予權限。
+    <a href="#step-72-準備待更新的用戶資訊-csv-檔">Step 7.2 </a>準備待更新的用戶資訊 CSV 檔，再根據 
+    <a href="#step-77-利用-powershell-大量更新用戶資訊">Step 7.7 </a>利用 PowerShell 大量更新用戶資訊即可，不需要重新註冊應用程式或授予權限。
   </span>
 </p>
