@@ -1,6 +1,13 @@
-# Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
+# Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
 
 > *This English verion of README was translated by AI and may contain inaccuracies. If needed, please refer to the Chinese version for the most accurate and official content.*
+
+This is a Microsoft 365 Copilot integrated Teams application that uses [Microsoft Graph](https://developer.microsoft.com/en-us/graph) to search for experts based on keywords such as skills and location. This application supports Single Sign-On (SSO), providing a better user experience and authentication functionality.
+
+1. Users can invoke the Expert Finder agent in Microsoft 365 Copilot and search for experts using natural language, such as: "Find AI experts for me," and the system will return a list of matching experts.
+2. Users can also launch the Expert Finder application in the [Teams Message Extension](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot) and input keywords like Azure or AI to retrieve a list of experts that match the criteria.
+
+<img src="images/demo.gif" alt="img-alt-text" width="700">
 
 
 ### Table of Contents
@@ -24,12 +31,7 @@
   - [Step 7.6 Grant API Permissions to the App by Global Admin](#step-7.6-grant-api-permissions-to-the-app-by-global-admin)  
   - [Step 7.7 Bulk Update User Info Using PowerShell](#step-7.7-bulk-update-user-info-using-powershell)
 
-This Teams application, integrated with Microsoft 365 Copilot, allows users to search for experts based on keywords such as skills and location using Microsoft Graph. The app supports Single Sign-On (SSO), offering a better user experience and enhanced authentication.
-1. Users can open the Expert Finder agent within Microsoft 365 Copilot and make natural language queries such as, “Find me an AI expert.” The system will return a list of matching experts.
-1. Users can also open the Expert Finder app within the Teams Message Extension, input keywords like Azure or AI, and receive a list of experts that meet the criteria.
-
-![img-alt-text](images/demo.gif =700x)
-
+---
 
 # Step 1. Prerequisites
 
