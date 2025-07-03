@@ -13,7 +13,7 @@
 - [Step 6. 在 Teams 與 Microsoft 365 Copilot 使用應用程式](#step-6-在-teams-與-microsoft-365-copilot-使用應用程式)
     - [Step 6.1 在 Copilot 中依技能與辦公室地點搜尋](#step-61-在-copilot-中依技能與辦公室地點搜尋)
     - [Step 6.2 在 Teams 聊天室中使用 Message Extension](#step-62-在-teams-聊天室中使用-message-extension)
-- [Step 7. 利用 PowerShell 大量更新用戶資訊 (Optional)](#step-7-利用-powershell-大量更新用戶資訊-(optional))
+- [Step 7. 利用 PowerShell 大量更新用戶資訊 (Optional)](#step-7-利用-powershell-大量更新用戶資訊-optional)
   - [Step 7.1 複製儲存庫](#step-71-複製儲存庫)
   - [Step 7.2 準備待更新的用戶資訊 CSV 檔](#step-72-準備待更新的用戶資訊-csv-檔)
   - [Step 7.3 安裝 Microsoft Graph PowerShell SDK](#step-73-安裝-microsoft-graph-powershell-sdk)
@@ -288,7 +288,7 @@ git clone https://github.com/yuting1008/MSFT-Expert-Finder.git
 
 > 若想了解更多以 PowerShell 註冊 Microsoft Entra 應用程式的資訊，可參考此[文件](https://learn.microsoft.com/en-us/powershell/microsoftgraph/app-only?view=graph-powershell-1.0)。
 
-##　Step 7.6 全域管理員授予應用程式 API 權限
+## Step 7.6 全域管理員授予應用程式 API 權限
 完成應用程式註冊後，您需要為該應用程式授予適當的 Microsoft Graph API 權限。這些權限將決定應用程式是否能夠讀取或更新使用者資料、網站內容等。
 <p> <span style="color:red;font-weight:bold">⚠ 注意：只有具備 Microsoft 365 全域管理員（Global Administrator）權限的帳號才能完成此授權步驟。</span></p>
 
