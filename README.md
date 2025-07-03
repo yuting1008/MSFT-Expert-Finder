@@ -56,7 +56,8 @@
         - 導覽至 Teams 應用程式 ( Teams apps ) > 設定原則 ( Setup policies ) > 全域 Global（組織範圍的應用程式預設值 Org-wide default ）。 \
           <img src="images/login.png" alt="img-alt-text" width="500">
         - 啟用「上傳自訂應用程式」 ( Upload custom apps )。 \
-            ![teams-app-upload-permission](images/teams-app-upload-permission-2.png =500x)
+          <img src="images/teams-app-upload-permission-2.png" alt="img-alt-text" width="500">
+          
         - 前往 Teams 應用程式 ( Teams apps ) > 管理應用程式 ( Manage apps ) > 操作 ( Actions ) > 組織範圍的應用程式設定 ( Org-wide app settings )。 \
           <img src="images/manage-app.png" alt="img-alt-text" width="1000">
         - 啟用「允許上傳自訂應用程式供個人使用」( Upload custom apps for personal use )。 \
@@ -87,23 +88,23 @@
 1.	開啟 [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) 並以您的 Microsoft 365 帳號登入，此時您的 Microsoft Entra 租用戶會作為身分識別，在 Microsoft Entra Admin Center 中紀錄 Graph Explorer。
 1.	前往 [Microsoft Entra Admin Center](https://entra.microsoft.com) 並以您的 Microsoft 365 帳號登入。接下來將會授權剛才記錄到的 Graph Explorer。
 1.  前往應用程式 ( Application )，若您是首次在 Microsoft Entra Admin Center 中開啟應用程式，需要先啟用全域安全存取。 \
-   <img src="images/enable-application-access.png" alt="img-alt-text" width="800">
+    <img src="images/enable-application-access.png" alt="img-alt-text" width="800">
 1.	選擇企業應用程式 ( Enterprise applications ) 中的 Graph Explorer。 \
-   <img src="images/entra-id-application.png" alt="img-alt-text" width="600">
+    <img src="images/entra-id-application.png" alt="img-alt-text" width="600">
 1.	選擇權限 ( Permission ) 代表您的組織授予 Graph Explorer 權限。 \
-   <img src="images/enable-graph.png" alt="img-alt-text" width="500">
+    <img src="images/enable-graph.png" alt="img-alt-text" width="500">
 
 ### 2.2.2 於 Microsoft Entra Admin Center 取得用戶 ID 並在 Graph Explorer 更新用戶技能
 1.	開啟 [Microsoft Entra Admin Center](https://entra.microsoft.com) 以您的 Microsoft 365 帳號登入。
 1.  導覽至使用者 ( Users ) > 所有使用者 ( All users ) 中尋找欲更新資料的用戶。
-1.  複製其物件識別碼 ( Object ID )，稍後會在 Graph Explorer 中使用此 id 更改用戶資料。 \
-   <img src="images/user-id.png" alt="img-alt-text" width="800">   
+1.  複製其物件識別碼 ( Object ID )，稍後會在 Graph Explorer 中使用此 id 更改用戶資料。 \ 
+    <img src="images/user-id.png" alt="img-alt-text" width="800">   
 1.	開啟 [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) 並以您的 Microsoft 365 帳號登入。
 1.	使用 PACTH 功能呼叫 `https://graph.microsoft.com/v1.0/users/{user-id}`，並在 Request Body 中依照格式輸入欲更新的內容，格式如`{"skills": ["Python", "JavaScript"]}`或`{"skills": ["量化交易"]}`等。
-1.  成功執行後會看到 204 No Content 的 HTTP 狀態碼如下圖所示。 \
-   <img src="images/graph-explorer.jpg" alt="img-alt-text" width="800">   
+1.  成功執行後會看到 204 No Content 的 HTTP 狀態碼如下圖所示。 \ 
+    <img src="images/graph-explorer.jpg" alt="img-alt-text" width="800">   
 1.  您可以使用 GET 功能呼叫 ``https://graph.microsoft.com/v1.0/users/{user-id}/?$select=displayName,skills`` 來檢查用戶的技能是否成功更新。 \
-   <img src="images/skill-check.png" alt="img-alt-text" width="800">   
+    <img src="images/skill-check.png" alt="img-alt-text" width="800">   
 
 > 每次要更新用戶的技能時，皆需重複[以上步驟](#於-microsoft-entra-admin-center-取得用戶-id-並在-graph-explorer-更新用戶技能)。
 
@@ -115,22 +116,24 @@
 1. 複製儲存資料庫：
 
     ```bash
-    git clone https://mtc-taiwan@dev.azure.com/mtc-taiwan/MTC%20Internal/_git/expert-finder
+    git clone https://github.com/yuting1008/MSFT-Expert-Finder.git
     ```
 1. 將目錄切換至 `expert-finder`，並使用 Visual Studio Code 開啟。
 1. 在 VS Code 中選擇檔案 > 開啟資料夾，並選擇範例專案的資料夾。
 1. 選擇執行與偵錯 ( Run and Debug ) > Debug in Teams (Chrome) 以在 Teams 網頁版本地端執行應用程式。 \
-    ![debug-in-teams](images/debug.png =400x)
+    <img src="images/debug.png" alt="img-alt-text" width="400">   
 1. 瀏覽器將自動開啟並進入 Teams 網頁版，請保持此瀏覽器開啟。
 1. 回到 VS Code 目錄中的 ``env/env.local``，複製 ``AAD_APP_CLIENT_ID``到記事本，稍後將會用於尋找應用程式。 \
-    ![img-alt-text](images/aad-client-id.png =600x)
+    <img src="images/aad-client-id.png" alt="img-alt-text" width="600">   
 1. 前往 [Microsoft Entra Admin Center](https://entra.microsoft.com) 並以您的 Microsoft 365 帳號登入。接下來要授權 Graph API 所需要的權限。
 1. 開啟應用程式 ( Application ) 中的應用程式註冊  ( Application registration )，找到以剛才複製的 ``AAD_APP_CLIENT_ID`` 作為應用程式 ( 用戶端 ) 識別碼的應用程式。 \
-    ![img-alt-text](images/app-registration.png =600x)
+    <img src="images/app-registration.png" alt="img-alt-text" width="600">   
 1. 開啟 API 權限，並代表您的組織授與管理員同意。 \
-    ![img-alt-text](images/api-permission.png =700x) \
+    <img src="images/api-permission.png" alt="img-alt-text" width="700">   
+   
     完成後你會看到狀態改為綠色打勾符號，並顯示已授與。 \
-    ![img-alt-text](images/permission-check.png =700x)
+    <img src="images/permission-check.png" alt="img-alt-text" width="700">   
+   
 1. 回到開啟 Teams 網頁板的瀏覽器，根據[此章節](#在-teams-與-microsoft-365-copilot-使用應用程式)測試應用程式。
 1. 完成測試後即可關閉瀏覽器。
 
@@ -139,34 +142,39 @@
 > 2. 根據 ``launch.json``，接續執行 ``tasks.json`` 中定義的任務，包含確認並建立 ``env`` 資料夾與檔案、讀取環境變數、驗證先備條件、執行 Teams 應用程式生命週期等。
 > 3. 執行 ``teamsapp.local.yml`` 中定義的 Teams 應用程式的生命週期，包含 [Provision](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/provision)、[Deploy](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/deploy)、[Publish](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/deploy-teams-app-to-container-service)，過程中會參考 ``env/.env.local`` 與 ``env/.env.local.user`` 中的環境變數。
 > 
-> ![f5-tasks](images/f5-tasks.png =500x)
+> <img src="images/f5-tasks.png" alt="img-alt-text" width="500">   
+> 
 
 
 # Step 4. 部署應用程式至 Azure
 請確保已照[上述步驟](#本地測試應用程式)在本地開發環境成功運行，本階段我們將部署應用程式至 Azure，並建立 Azure 資源如 Bot Services 和 App Services。過程中會使用到 ``teamsapp.yml`` 定義的 Teams 應用程式生命週期，包含 [Provision](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/provision)、[Deploy](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/deploy)、[Publish](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/deploy-teams-app-to-container-service)，同時會參考 ``env/.env.dev`` 與 ``env/.env.dev.user`` 中的環境變數。
 
 1. 開啟 Teams Toolkit，接下來會利用到 Lifecycle 的功能如下圖所示。 \
-    ![teams-toolkit-lifecycle](images/provision-deploy.png =400x)
+    <img src="images/provision-deploy.png" alt="img-alt-text" width="400">   
 1. 於 Lifecycle 中選擇 **Provision**（佈建），此動作將會在 Azure 中建立必要的資源。首先，選擇即將建立資源的 Azure 訂閱 ( Subscription )。 \
-    ![subscription](images/subscription.png =400x)
+    <img src="images/subscription.png" alt="img-alt-text" width="400">   
 1. 選擇即將建立資源的 Azure 資源群組 ( Resource Group )。 \
-    ![resource-group](images/resource-group.png =400x)
+    <img src="images/resource-group.png" alt="img-alt-text" width="400">   
 1. 按下 **Provision** 完成 Azure 資源建立。 \
-    ![provision](images/provision.png =400x)
+    <img src="images/provision.png" alt="img-alt-text" width="400">   
 1. 於 Lifecycle 中選擇 **Deploy**（部署），將應用程式部署至 Azure。
     <p> <span style="color:red;font-weight:bold">⚠ 注意：如果您未來有修改程式碼，您可以重新點擊 Deploy 以將變更部署至 Azure。</span></p>
 
 1. 回到 VS Code 目錄中的 ``env/env.dev``，複製 ``AAD_APP_CLIENT_ID``到記事本，稍後將會用於尋找應用程式。 \
-    ![img-alt-text](images/aad-client-id-2.png =600x)
+    <img src="images/aad-client-id-2.png" alt="img-alt-text" width="600">   
 1. 前往 [Microsoft Entra Admin Center](https://entra.microsoft.com) 並以您的 Microsoft 365 帳號登入。接下來要授權 Graph API 所需要的權限。
 1. 開啟應用程式 ( Application ) 中的應用程式註冊  ( Application registration )，找到以剛才複製的 ``AAD_APP_CLIENT_ID`` 作為應用程式 ( 用戶端 ) 識別碼的應用程式。 \
-    ![img-alt-text](images/app-registration2.png =600x)
+    <img src="images/app-registration2.png" alt="img-alt-text" width="600">   
+   
 1. 開啟 API 權限，並代表您的組織授與管理員同意。 \
-    ![img-alt-text](images/api-permission2.png =700x) \
+    <img src="images/app-registration2.png" alt="img-alt-text" width="600">   
+   
     完成後你會看到狀態改為綠色打勾符號，並顯示已授與。 \
-    ![img-alt-text](images/permission-check.png =700x)
+    <img src="images/permission-check.png" alt="img-alt-text" width="600">   
+   
 1. 完成本階段後，您會在 Azure 資源群組中看到資源已成功建立，包括 Azure Bot、App Service、App Service 方案。 \
-    ![img-alt-text](images/resource.png =600x)
+    <img src="images/resource.png" alt="img-alt-text" width="600">   
+   
 <!-- 1. 如果在使用應用程式時遇到任何錯誤，可在 Azure App Services 中查看錯誤日誌。
     1. 開啟 [Azure Portal](https://ms.portal.azure.com/#home) 以您的 Azure 帳號登入。
     1. 前往已建立好的 Web App，選擇 **監視 ( Monitor ) > App Service 記錄 ( App Service logs )**。
@@ -181,14 +189,14 @@
 將應用程式部署至 Azure 之後，我們會將應用程式上傳到 Teams 系統管理中心，並允許應用程式發佈到您組織內的 Teams 應用程式商店。
 
 1. 開啟 Teams Toolkit，於  Lifecycle 中選擇 **Publish**（發佈），將應用程式發佈到 Teams 系統管理中心。 \
-    ![teams-toolkit-lifecycle](images/publish.png =400x)
+    <img src="images/publish.png" alt="img-alt-text" width="400">   
 1. 前往 [**Teams 系統管理中心**](https://admin.teams.microsoft.com/) 以您的 Microsoft 365 帳號登入。
 1. 選擇管理應用程式 > 查詢 ``Expert Finder`` > 選擇剛發佈的應用程式。 \
-    ![img-alt-text](images/teams-admin-center-1.png =800x)
+    <img src="images/teams-admin-center-1.png" alt="img-alt-text" width="800">   
 1. 允許發佈 ``Expert Finder dev`` 應用程式。 \
-    ![img-alt-text](images/teams-admin-center-2.png =600x)
+    <img src="images/teams-admin-center-2.png" alt="img-alt-text" width="600">      
 1. 開啟您的 Teams，前往 Teams 應用程式商店並安裝應用程式。 接著你就可以參考[下個章節](#在-teams-與-microsoft-365-copilot-使用應用程式)來使用此應用程式。\
-    ![install-app](images/app-store.png =700x)
+    <img src="images/app-store.png" alt="img-alt-text" width="700">   
 
 # Step 6. 在 Teams 與 Microsoft 365 Copilot 使用應用程式
 以下示範如何在 Copilot 以及 Teams 聊天室中使用 Expert Finder。
@@ -200,12 +208,13 @@
 1. `Find experts with skill in Azure.`
 2. `Find experts with skill in Python and who are from Taipei.`
 
-![demo](images/copilot-demo.gif =800x)
+<img src="images/copilot-demo.gif" alt="img-alt-text" width="800">   
+
 
 ## Step 6.2 在 Teams 聊天室中使用 Message Extension
 開啟 Teams 聊天室，點擊右下角「+」符號並選擇開啟 Expert Finder，在搜尋框中以技能作為關鍵字查詢專家，例如：Azure。
 
-![demo](images/teams-message-extension-demo.gif =800x)
+<img src="images/teams-message-extension-demo.gif" alt="img-alt-text" width="800">   
 
 # Step 7. 利用 PowerShell 大量更新用戶資訊 (Optional)
 本章節的目標為透過 PowerShell 腳本，批次自動化更新用戶的個人資訊，包含技能（Skills）與辦公室地點（OfficeLocation）。以下將依序說明如何準備用戶資料、安裝必要套件、建立驗證憑證、註冊 Microsoft Entra 應用程式、設定 API 權限，到最後執行批次更新指令。
@@ -214,7 +223,7 @@
 ## Step 7.1 複製儲存庫
 請執行以下指令以複製儲存庫，若您先前已複製過此儲存庫，可以跳過此步驟。
 ```bash
-git clone https://mtc-taiwan@dev.azure.com/mtc-taiwan/MTC%20Internal/_git/expert-finder
+git clone https://github.com/yuting1008/MSFT-Expert-Finder.git
 ```
 
 ## Step 7.2 準備待更新的用戶資訊 CSV 檔
@@ -234,7 +243,8 @@ git clone https://mtc-taiwan@dev.azure.com/mtc-taiwan/MTC%20Internal/_git/expert
 ## Step 7.3 安裝 Microsoft Graph PowerShell SDK
 為了使用 PowerShell 與 Microsoft Graph 進行互動，您需要先安裝 [Microsoft Graph PowerShell SDK](https://learn.microsoft.com/en-us/powershell/microsoftgraph/overview?view=graph-powershell-1.0)。此套件提供一系列指令，讓您可以在 PowerShell 中呼叫 Microsoft Graph API 並存取 Microsoft 365 資料。
 1. 在應用程式搜尋列中輸入 PowerShell。右鍵點擊該項目，選擇 「以系統管理員身分執行」PowerShell。\
-    ![demo](images/open-powershell.png =500x)
+    <img src="images/open-powershell.png" alt="img-alt-text" width="500">   
+   
 1. 執行以下指令以安裝 Microsoft Graph PowerShell SDK。
     ```
     Install-Module Microsoft.Graph -Scope CurrentUser
@@ -244,7 +254,7 @@ git clone https://mtc-taiwan@dev.azure.com/mtc-taiwan/MTC%20Internal/_git/expert
     Get-Module Microsoft.Graph -ListAvailable
     ```
 1. 若成功安裝您將會看到以下畫面，顯示您安裝的位置與版本。 \
-    ![img](images/graph-module-intall.png =600x)
+    <img src="images/graph-module-intall.png" alt="img-alt-text" width="600">   
 
 ## Step 7.4 建立 Self-signed Public Certificate 以驗證應用程式
 在使用 Microsoft Graph PowerShell SDK 呼叫 API 時，應用程式需要透過憑證（Certificate）進行驗證，以確保存取安全且符合企業授權機制。本步驟將利用 PowerShell 建立一組自我簽署的公開憑證（Self-signed Public Certificate），並匯出成 `.cer` 檔案，供後續註冊至 Microsoft Entra 應用程式使用。
@@ -285,9 +295,11 @@ git clone https://mtc-taiwan@dev.azure.com/mtc-taiwan/MTC%20Internal/_git/expert
 1. 開啟 [Microsoft Entra Admin Center](https://entra.microsoft.com) 以具有全域管理員 ( Global Administrator ) 權限的 Microsoft 365 帳號登入。
 1. 前往應用程式 ( Applications ) > 應用程式註冊 ( Application Registration )，找到剛才建立的應用程式 `Graph PowerShell Script`。
 1. 開啟 `Graph PowerShell Script` 中的 API 權限 ( API Permissions )。 \
-    ![img](images/app.png =600x)
+    <img src="images/app.png" alt="img-alt-text" width="600">   
+   
 1. 授予 `Sites.ReadWrite.All`、`User.Read.All` 以及 `User.ReadWrite.All` 的權限。 \
-    ![img](images/grant-api-permission.png =600x)
+    <img src="images/grant-api-permission.png" alt="img-alt-text" width="600">   
+   
 
 > 若想了解更多關於 Microsoft Entra 內建角色與權限的資訊，可參考此[文件](https://learn.microsoft.com/zh-tw/entra/identity/role-based-access-control/permissions-reference)。
 
