@@ -1,9 +1,14 @@
 # Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
+這一個結合 Microsoft 365 Copilot 的 Teams 應用程式，透過 [Microsoft Graph](https://developer.microsoft.com/en-us/graph) 根據技能、地點等關鍵字搜尋專家。此應用程式支援單一登入 (SSO)，提供更佳的使用者體驗與身份驗證功能。
+1. 使用者可在 Microsoft 365 Copilot 中開啟 Expert Finder 代理程式以自然語言查詢專家，例如：「請幫我尋找 AI 專家」，系統就會回傳符合條件的專家名單。
+1. 使用者亦可在 [Teams Message Extension](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot) 中開啟 Expert Finder 應用程式，並輸入技能如 Azure、AI 等關鍵字，系統就會回傳符合條件的專家名單。
 
+
+<img src="images/demo.gif" alt="img-alt-text" width="700">
 
 ### 目錄
 
-- [Step 1. 先決條件](#step-1-先決條件)
+- [Step 1. 前置條件](#step-1-前置條件)
 - [Step 2. 資料準備](#step-2-資料準備)  
     - [Step 2.1 利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點](#step-21-利用-microsoft-entra-admin-center-更新用戶的照片與辦公室地點)  
     - [Step 2.2 在 Graph Explorer 中利用 API 更新用戶的技能](#step-22-在-graph-explorer-中利用-api-更新用戶的技能)  
@@ -23,16 +28,9 @@
   - [Step 7.7 利用 PowerShell 大量更新用戶資訊](#step-77-利用-powershell-大量更新用戶資訊)
 
 
-這一個結合 Microsoft 365 Copilot 的 Teams 應用程式，透過 [Microsoft Graph](https://developer.microsoft.com/en-us/graph) 根據技能、地點等關鍵字搜尋專家。此應用程式支援單一登入 (SSO)，提供更佳的使用者體驗與身份驗證功能。
-1. 使用者可在 Microsoft 365 Copilot 中開啟 Expert Finder 代理程式以自然語言查詢專家，例如：「請幫我尋找 AI 專家」，系統就會回傳符合條件的專家名單。
-1. 使用者亦可在 [Teams Message Extension](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot) 中開啟 Expert Finder 應用程式，並輸入技能如 Azure、AI 等關鍵字，系統就會回傳符合條件的專家名單。
 
 
-<img src="images/demo.gif" alt="img-alt-text" width="700">
-
-
-
-# Step 1. 先決條件
+# Step 1. 前置條件
 在開始本地測試應用程式與部署應用程式至 Azure 前，請先確保已安裝以下提及的應用程式與套件，並具備帶有指定權限的帳號。
 
 1. 滿足以下條件的 Azure 帳號。
