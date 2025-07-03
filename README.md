@@ -1,4 +1,4 @@
-# Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
+# Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
 
 
 ### 目錄
@@ -28,7 +28,8 @@
 1. 使用者亦可在 [Teams Message Extension](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot) 中開啟 Expert Finder 應用程式，並輸入技能如 Azure、AI 等關鍵字，系統就會回傳符合條件的專家名單。
 
 
-![img-alt-text](images/demo.gif =700x)
+<img src="images/demo.gif" alt="img-alt-text" width="700">
+
 
 
 # Step 1. 先決條件
@@ -46,22 +47,22 @@
 1. [Visual Studio Code](https://code.visualstudio.com/)
 1. [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
     1. Teams Toolkit 安裝完成後你會在 VS Code 左側欄中看到圖示，請使用您的 Azure 帳戶和 Microsoft 365 帳戶登入，並確認具備 Copilot for Microsoft 365 授權及上傳自訂應用程式的權限。 \
-        ![account-login](images/login.png =600x)
+       <img src="images/login.png" alt="img-alt-text" width="600">
     1. 如果上傳自訂 Teams 應用程式權限被禁用，請依照以下步驟啟用上傳自訂應用程式的權限：
 
         - 當上傳自訂應用程式被禁用時，會顯示以下畫面： \
-            ![custom-app-disabled](images/custom-app-disabled.png =400x)
+          <img src="images/custom-app-disabled.png" alt="img-alt-text" width="400">
         - 前往 [Teams 管理中心](https://admin.teams.microsoft.com/)。
         - 導覽至 Teams 應用程式 ( Teams apps ) > 設定原則 ( Setup policies ) > 全域 Global（組織範圍的應用程式預設值 Org-wide default ）。 \
-            ![teams-app-upload-permission](images/setup-poilcies.png =500x)
+          <img src="images/login.png" alt="img-alt-text" width="500">
         - 啟用「上傳自訂應用程式」 ( Upload custom apps )。 \
             ![teams-app-upload-permission](images/teams-app-upload-permission-2.png =500x)
         - 前往 Teams 應用程式 ( Teams apps ) > 管理應用程式 ( Manage apps ) > 操作 ( Actions ) > 組織範圍的應用程式設定 ( Org-wide app settings )。 \
-            ![teams-app-upload-permission](images/manage-app.png =1000x)
+          <img src="images/manage-app.png" alt="img-alt-text" width="1000">
         - 啟用「允許上傳自訂應用程式供個人使用」( Upload custom apps for personal use )。 \
-            ![teams-app-upload-permission](images/org-wide-app-settings.png =300x)
+          <img src="images/org-wide-app-settings.png" alt="img-alt-text" width="300">
         - 完成以上步驟後回到 VS Code，您的 Teams Toolkit 中會顯示 Custom App Uploaded Enabled。 \
-            ![teams-app-upload-permission](images/custom-app-allowed.png =300x)
+          <img src="images/custom-app-allowed.png" alt="img-alt-text" width="300">
 
 # Step 2. 資料準備
 當使用者輸入查詢時，Expert Finder 會呼叫 [Microsoft Graph API](https://learn.microsoft.com/en-us/graph/overview) 以存取用戶資料，並回傳用戶的姓名、照片、辦公室地點、以及技能。以下將介紹如何利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點，以及在 Graph Explorer 中利用 API 更新用戶的技能。若您想要批次更改大量使用者資訊，您可以參考 [Step 7. 利用 PowerShell 大量更新使用者資訊 (Optional)](#step-7.-利用-powershell-大量更新使用者資訊-(optional))。
@@ -70,38 +71,39 @@
 ## Step 2.1 利用 Microsoft Entra Admin Center 更新用戶的照片與辦公室地點
 1. 開啟 [Microsoft Entra Admin Center](https://entra.microsoft.com) 並以您的 Microsoft 365 帳號登入。
 1. 瀏覽使用者 ( Users ) > 所有使用者 ( All Users )。 \
-    ![img-alt-text](images/entra-id-users.png =600x)
+   <img src="images/entra-id-users.png" alt="img-alt-text" width="600">
 1. 選擇待更新資訊的用戶，並在概觀 ( Overview ) 中更新用戶照片。 \
-    ![img-alt-text](images/photo.png =600x)
+   <img src="images/entra-id-users.png" alt="img-alt-text" width="600">
 1. 點選屬性 ( Properties ) 。 \
-    ![img-alt-text](images/property.png =600x)
+   <img src="images/property.png" alt="img-alt-text" width="600">
 1. 請下滑至工作資訊 ( Job Information )，並選擇鉛筆符號進行編輯。 \
-    ![img-alt-text](images/job-info.png =600x)
+   <img src="images/job-info.png" alt="img-alt-text" width="600">
 1. 更新辦公室位置 ( Office location ) 的資料並儲存。 \
-    ![img-alt-text](images/office-location.png =600x)
+   <img src="images/office-location.png" alt="img-alt-text" width="600">
+   
 
 ## Step 2.2 在 Graph Explorer 中利用 API 更新用戶的技能
 ### 2.2.1 首次使用 Graph Explorer 時需先至 Microsoft Entra Admin Center 授予權限
 1.	開啟 [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) 並以您的 Microsoft 365 帳號登入，此時您的 Microsoft Entra 租用戶會作為身分識別，在 Microsoft Entra Admin Center 中紀錄 Graph Explorer。
 1.	前往 [Microsoft Entra Admin Center](https://entra.microsoft.com) 並以您的 Microsoft 365 帳號登入。接下來將會授權剛才記錄到的 Graph Explorer。
 1.  前往應用程式 ( Application )，若您是首次在 Microsoft Entra Admin Center 中開啟應用程式，需要先啟用全域安全存取。 \
-    ![img-alt-text](images/enable-application-access.png =800x)
+   <img src="images/enable-application-access.png" alt="img-alt-text" width="800">
 1.	選擇企業應用程式 ( Enterprise applications ) 中的 Graph Explorer。 \
-    ![img-alt-text](images/entra-id-application.png =600x)
+   <img src="images/entra-id-application.png" alt="img-alt-text" width="600">
 1.	選擇權限 ( Permission ) 代表您的組織授予 Graph Explorer 權限。 \
-    ![img-alt-text](images/enable-graph.png =500x)
+   <img src="images/enable-graph.png" alt="img-alt-text" width="500">
 
 ### 2.2.2 於 Microsoft Entra Admin Center 取得用戶 ID 並在 Graph Explorer 更新用戶技能
 1.	開啟 [Microsoft Entra Admin Center](https://entra.microsoft.com) 以您的 Microsoft 365 帳號登入。
 1.  導覽至使用者 ( Users ) > 所有使用者 ( All users ) 中尋找欲更新資料的用戶。
 1.  複製其物件識別碼 ( Object ID )，稍後會在 Graph Explorer 中使用此 id 更改用戶資料。 \
-    ![img-alt-text](images/user-id.png =800x)
+   <img src="images/user-id.png" alt="img-alt-text" width="800">   
 1.	開啟 [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) 並以您的 Microsoft 365 帳號登入。
 1.	使用 PACTH 功能呼叫 `https://graph.microsoft.com/v1.0/users/{user-id}`，並在 Request Body 中依照格式輸入欲更新的內容，格式如`{"skills": ["Python", "JavaScript"]}`或`{"skills": ["量化交易"]}`等。
 1.  成功執行後會看到 204 No Content 的 HTTP 狀態碼如下圖所示。 \
-    ![img-alt-text](images/graph-explorer.jpg =800x)
+   <img src="images/graph-explorer.jpg" alt="img-alt-text" width="800">   
 1.  您可以使用 GET 功能呼叫 ``https://graph.microsoft.com/v1.0/users/{user-id}/?$select=displayName,skills`` 來檢查用戶的技能是否成功更新。 \
-    ![img-alt-text](images/skill-check.png =800x)
+   <img src="images/skill-check.png" alt="img-alt-text" width="800">   
 
 > 每次要更新用戶的技能時，皆需重複[以上步驟](#於-microsoft-entra-admin-center-取得用戶-id-並在-graph-explorer-更新用戶技能)。
 
