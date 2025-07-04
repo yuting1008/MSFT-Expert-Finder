@@ -4,6 +4,7 @@
 1. 使用者亦可在 [Teams Message Extension](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot) 中開啟 Expert Finder 應用程式，並輸入技能如 Azure、AI 等關鍵字，系統就會回傳符合條件的專家名單。
 
 > The English version of README is provided [here](https://github.com/yuting1008/MSFT-Expert-Finder/blob/main/README(EN).md).
+<img src="images/intro.png" alt="img-alt-text" width="700">
 
 <img src="images/demo.gif" alt="img-alt-text" width="700">
 
