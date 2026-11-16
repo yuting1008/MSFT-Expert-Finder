@@ -1,7 +1,5 @@
 # Expert Finder with SSO in Copilot as a Teams AI-based Message Extension
 
-> *This English verion of README was translated by AI and may contain inaccuracies. If needed, please refer to the Chinese version for the most accurate and official content.*
-
 This is a Microsoft 365 Copilot integrated Teams application that uses [Microsoft Graph](https://developer.microsoft.com/en-us/graph) to search for experts based on keywords such as skills and location. This application supports Single Sign-On (SSO), providing a better user experience and authentication functionality.
 
 1. Users can invoke the Expert Finder agent in Microsoft 365 Copilot and search for experts using natural language, such as: "Find AI experts for me," and the system will return a list of matching experts.
@@ -395,3 +393,5 @@ Now that your app is registered and permissions granted, you can run a script to
 <a href="#step-72-prepare-a-csv-file-with-user-info-to-be-updated">Step 7.2</a> to prepare the CSV file, and  
 <a href="#step-77-bulk-update-user-info-using-powershell">Step 7.7</a> to run the script — no need to re-register the app or re-grant permissions.
 </span></p>
+
+> *This English verion of README was translated by AI and may contain inaccuracies. If needed, please refer to the Chinese version for the most accurate and official content.*
